@@ -10,7 +10,6 @@ begin
     puts "  > received: #{message}"
     puts "  > sending:  #{message.reverse}"
     connection.write(message.reverse)
-    puts "  > sent"
     connection.close
     puts "  > connection closed"
   }
