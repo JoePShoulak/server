@@ -11,7 +11,6 @@ begin
       puts "> User disconnected"
     else
       puts "  > received: #{message}"
-      puts "  > #{message.class}"
       puts "  > sending:  #{message.reverse}"
       connection.write(message.reverse)
       connection.close
