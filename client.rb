@@ -13,7 +13,7 @@ if s.socket != nil
     puts "> Connection made to server"
     message = ""
     while message.length.zero?
-      puts "> What would you like to say?"
+      puts "> What number would you like to search for?"
       print "> "
       message = gets.chomp
       if message.length.zero?
@@ -21,7 +21,7 @@ if s.socket != nil
       end
     end
     s.send(message) 
-    puts "> Sending..."
+    puts "> Message sent"
     puts "> Received: #{s.get}"
     s.close
     puts "> Disconnected from server"

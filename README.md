@@ -4,21 +4,23 @@
 This is a program I'm writing for school that will be a server that can be accessed via the command line where the argument is a word the server returns its definition.
 
 ## Usage ##
-The server currently only reverses strings.
+The server currently searches through Fibonacci numbers with efficieny of O(log n)
 
     $ ruby server.rb
       > Reversal server online.
       > Waiting for connection...
       > Connection made
-        > Received: Whatever you want to put here.
-        > Sending: .ereh tup ot tnaw uoy revethaW
+        > Received: 13
+        > Found 13 at place 5
+        > Sending: 5
         > Connection closed
       > Waiting for connection...
-
+ 
+ 
     $ ruby client.rb
       > Connection made to server
-      > What would you like to say?
-      > Whatever you want to put here.
+      > What number would you like to search for?
+      > 13
       > Message sent
-      > Received: .ereh tup ot tnaw uoy revethaW
+      > Received: 5
       > Disconnected from server
