@@ -10,11 +10,11 @@ begin
     if message.length.zero?
       puts "> User disconnected"
     else
-      puts "  > received: #{message}"
-      puts "  > sending:  #{message.reverse}"
+      puts "  > Received: #{message}"
+      puts "  > Sending:  #{message.reverse}"
       connection.write(message.reverse)
       connection.close
-      puts "  > connection closed"
+      puts "  > Connection closed"
     end
   }
 rescue Interrupt => e
