@@ -1,63 +1,38 @@
 require 'socket'
 require_relative 'session.rb'
+require_relative 'searching.rb'
 
-fibonacci = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946]
+fibonacci = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765]
 
-def find_center(l)
-  exp = 1
-  while 2**exp < l.length
-    exp += 1
-  end
-  2**(exp - 1)
-end
-
-def binary_search(list, item)
-  it = find_center(list)
-  place = it
-  found = false
-  while it != 0
-    it /= 2
-    if list[place] == item
-      found = true
-      it = 0
-    elsif list[place] < item
-      place += it
-    elsif list[place] > item
-      place -= it
-    end
-  end
-  if found
-    place
-  else
-    false
-  end
-end
-
-a = Session.new
-a.create
-puts "> Reversal server online"
+a = Session.new # Make a new session object
+a.create # Create a server
+puts "> Search server online"
 begin
-  loop {
+  loop { # Until exited...
     puts "> Waiting for connection..."
-    connection = a.accept
+    connection = a.accept # Accept the connection
     puts "> Connection made"
-    message = connection.recv(1024)
-    if message.length.zero?
+    message = connection.recv(1024) # Get what they sent
+    if message.length.zero?  # User used ^C
       puts "> User disconnected"
     else
       puts "  > Received: #{message}"
-      number = message.to_i
-      result = binary_search(fibonacci, number)
-      if result
+      number = message.to_i # Turn the message into an int
+      result = binary_search(fibonacci, number) # Search for the int in our list, fibonacci
+      if result # If we sound something...
         puts "  > Found #{number} at position #{result}"
-        message = result
-      else
+        if result == 1 # If it was the first number...
+          message = "1, 2" # The first two Fibonacci numbers are the same
+        else
+          message = result # The list is shifted by one due to the
+        end
+      else # If we didn't...
         puts "  > Did not find #{number} in list"
-        message = "Not found"
+        message = "Not found" # Our message is "Not found"
       end
       puts "  > Sending: #{message}"
-      connection.write(message)
-      connection.close
+      connection.write(message) # Send the message
+      connection.close # Close the connection
       puts "  > Connection closed"
     end
   }

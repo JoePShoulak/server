@@ -8,7 +8,7 @@ The server currently searches through Fibonacci numbers with efficiency of O(log
 
 ```
 $ ruby server.rb
-> Reversal server online.
+> Search server online.
 > Waiting for connection...
 > Connection made
   > Received: 13
