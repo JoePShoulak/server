@@ -17,8 +17,8 @@ class Session
     self.socket.write(message)
   end
 
-  def get
-    self.socket.recv(1024)
+  def get(bytes=1024)
+    self.socket.recv(bytes)
   end
 
   def close

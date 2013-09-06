@@ -12,17 +12,17 @@ def find_center(l)
 end
 
 def binary_search(list, item)
-  it = find_center(fibonacci)
+  it = find_center(list)
   place = it
   found = false
   while it != 0
     it /= 2
-    if fibonacci[place] == number
+    if list[place] == item
       found = true
       it = 0
-    elsif fibonacci[place] < number
+    elsif list[place] < item
       place += it
-    elsif fibonacci[place] > number
+    elsif list[place] > item
       place -= it
     end
   end
