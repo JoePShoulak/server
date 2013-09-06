@@ -6,7 +6,7 @@ This is a program I'm writing for school that will be a server that can be acces
 ## Usage ##
 The server currently searches through Fibonacci numbers with efficieny of O(log n)
 
-```bash
+```
 $ ruby server.rb
 > Reversal server online.
 > Waiting for connection...
@@ -18,7 +18,7 @@ $ ruby server.rb
 > Waiting for connection...
 ```
 
-```bash
+```
 $ ruby client.rb
 > Connection made to server
 > What number would you like to search for?
