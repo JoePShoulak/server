@@ -55,7 +55,7 @@ begin
         puts "  > Did not find #{number} in list"
         message = "Not found"
       end
-      puts "  > Sending:  #{message}"
+      puts "  > Sending: #{message}"
       connection.write(message)
       connection.close
       puts "  > Connection closed"
