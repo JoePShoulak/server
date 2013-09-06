@@ -1,8 +1,16 @@
 class Session
-  attr_accessor :socket
+  attr_accessor :socket, :server
 
-  def connect
-    self.socket = TCPSocket.new('127.0.0.1', 3333)
+  def connect(addr = '127.0.0.1', port = 3333)
+    self.socket = TCPSocket.new(addr, port)
+  end
+
+  def accept
+    self.server.accept
+  end
+
+  def create(addr = '', port = 3333)
+    self.server = TCPServer.new(addr, port)
   end
 
   def send(message)

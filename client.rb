@@ -2,7 +2,12 @@ require 'socket'
 require_relative 'session.rb' 
 
 s = Session.new
-s.connect
+begin
+  s.connect
+rescue
+  puts "> Server unresponsive"
+  exit
+end
 if s.socket != nil
   begin
     puts "> Connection made to server"

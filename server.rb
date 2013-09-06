@@ -1,5 +1,8 @@
 require 'socket'
-a = TCPServer.new('', 3333) # '' means to bind to "all interfaces", same as nil or '0.0.0.0'
+require_relative 'session.rb'
+
+a = Session.new
+a.create
 puts "> Reversal server online."
 begin
   loop {
