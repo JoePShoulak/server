@@ -11,6 +11,28 @@ def find_center(l)
   2**(exp - 1)
 end
 
+def binary_search(list, item)
+  it = find_center(fibonacci)
+  place = it
+  found = false
+  while it != 0
+    it /= 2
+    if fibonacci[place] == number
+      found = true
+      it = 0
+    elsif fibonacci[place] < number
+      place += it
+    elsif fibonacci[place] > number
+      place -= it
+    end
+  end
+  if found
+    place
+  else
+    false
+  end
+end
+
 a = Session.new
 a.create
 puts "> Reversal server online"
@@ -25,23 +47,10 @@ begin
     else
       puts "  > Received: #{message}"
       number = message.to_i
-      it = find_center(fibonacci)
-      place = it
-      found = false
-      while it != 0
-        it /= 2
-        if fibonacci[place] == number
-          found = true
-          it = 0
-        elsif fibonacci[place] < number
-          place += it
-        elsif fibonacci[place] > number
-          place -= it
-        end
-      end
-      if found
-        puts "  > Found #{number} at position #{place}"
-        message = place
+      result = binary_search(fibonacci, number)
+      if result
+        puts "  > Found #{number} at position #{result}"
+        message = result
       else
         puts "  > Did not find #{number} in list"
         message = "Not found"
