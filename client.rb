@@ -20,8 +20,9 @@ if s.socket != nil # If we don't have a nil connection (i.e. we're connected)
         puts "> Nothing entered"
       end
     end
+    print "> Sending message..."
     s.send(message) # Send the message
-    puts "> Message sent"
+    puts " Sent."
     length = s.get.to_i # Get the length of the string we're receiving
     puts "#{s.get(length)}" # Get the string
     s.close # Close the server

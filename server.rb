@@ -24,12 +24,12 @@ begin
       word = message # Turn the message into an int
       print "  > Searching for definitions of #{word}..."
       result = binary_search(words, word) # Search for the int in our list, fibonacci
-      result.map! { |place| "#{types[place].capitalize}: #{definitions[place].capitalize}" }
-      if !result.empty? # If list is not empty
+      if result # If list is not empty
+        result.map! { |place| "#{types[place].capitalize}: #{definitions[place].capitalize}" }
         puts " Found #{result.length}."
         message = "  " + result.join("\n  ")
       else # If list is empty
-        puts "  > Did not find #{word} in list"
+        puts "  > Did not find #{word} in dictionary"
         message = "Not found" # Our message is "Not found"
       end
       print "  > Sending length of definitions (#{message.length})..."
