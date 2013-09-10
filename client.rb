@@ -13,7 +13,7 @@ if s.socket != nil # If we don't have a nil connection (i.e. we're connected)
     puts "> Connection made to server"
     message = ""
     while message.length.zero? # While there is no value for the message
-      puts "> What number would you like to search for?"
+      puts "> What word would you like to look up?"
       print "> "
       message = gets.chomp # Ask for a message
       if message.length.zero? # If they entered nothing, tell them that and continue the loop
