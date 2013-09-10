@@ -11,20 +11,30 @@ def binary_search(list, item) # Finds the item in O(log n)
   it = 1 # This is where we start
   found = false # We haven't found it yet
   while it < 2*list.length && !found # While we haven't found it and there are still places to look...
+    # DEBUG INFO
     # puts "it: #{it}"
     # puts "place: #{place}"
     # puts "at place: #{list[place]}"
-    if list[place] == item # If where we are is what we're searching for, we found it
-      found = true
-    elsif list[place] < item # Too far? Go back.
+    if list[place] < item # Too far? Go back.
       place += list.length / (2**(it+1))
     elsif list[place] > item # Too early? Go forward.
       place -= list.length / (2**(it+1))
+    elsif list[place] == item # If where we are is what we're searching for, we found it
+      found = true
+      multiple = []
+      while list[place] == list[place-1]
+        place -= 1
+      end
+      while list[place] == list[place+1]
+        multiple += [place]
+        place += 1
+      end
+      multiple += [place]
     end
     it += 1
   end
   if found # If we found it...
-    place # Return the position of it in the list TODO: Return list of positions of words, when multiple entries
+    multiple # Return the position of it in the list TODO: Return list of positions of words, when multiple entries
   else # If we didn't find it (i.e. it's not in the list)
     false # Return false
   end

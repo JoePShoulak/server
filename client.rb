@@ -22,12 +22,8 @@ if s.socket != nil # If we don't have a nil connection (i.e. we're connected)
     end
     s.send(message) # Send the message
     puts "> Message sent"
-    begin
-      puts "> Received: #{s.get}" # Get the response
-    rescue # If server does not respond (usually, the server stopped running)
-      puts "> Server not responding" # Report error
-      exit # Exit 
-    end  
+    length = s.get.to_i # Get the length of the string we're receiving
+    puts "#{s.get(length)}" # Get the string
     s.close # Close the server
     puts "> Disconnected from server"
   rescue Interrupt # If user does ^C
@@ -38,3 +34,10 @@ if s.socket != nil # If we don't have a nil connection (i.e. we're connected)
 else # If we have a nil connection
   puts "> Server connection error" # Report error
 end
+
+
+# Implement something like...
+# 1. Receive number of entries from server
+# 2. number.times do
+#   a. puts s.get
+# 3. end
