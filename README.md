@@ -1,10 +1,10 @@
 # Dictionary Server #
 
 ## About ##
-This is a program I'm writing for school that will be a server that can be accessed via the command line where the argument is a word the server returns its definition.
+This is a program I'm writing for school that will be a server that can be accessed via the command line where the argument is a word the server returns its definition(s).
 
 ## Usage ##
-The server currently searches through Fibonacci numbers with efficiency of O(log n)
+The server searches through a dictionary and returns all included definitions for whatever word is sent, at an efficiency near O(log n).
 
 ```
 $ ruby server.rb

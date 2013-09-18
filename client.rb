@@ -35,10 +35,3 @@ if s.socket != nil # If we don't have a nil connection (i.e. we're connected)
 else # If we have a nil connection
   puts "> Server connection error" # Report error
 end
-
-
-# Implement something like...
-# 1. Receive number of entries from server
-# 2. number.times do
-#   a. puts s.get
-# 3. end
